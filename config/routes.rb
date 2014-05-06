@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
+
+  get 'tagged' => 'posts#tagged', :as => 'tagged'
+  get 'tags/:tag', to: 'articles#index', as: :tag
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
   get '/users/:id/add_email' => 'users#add_email', via: [:get, :patch, :post], :as => :add_user_email
   # The priority is based upon order of creation: first created -> highest priority.

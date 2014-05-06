@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
+# Act as Taggable
+gem 'acts-as-taggable-on'
 # Device and Fb
 gem 'devise'
 gem 'omniauth'

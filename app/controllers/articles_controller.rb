@@ -2,9 +2,15 @@ class ArticlesController < ApplicationController
 	def new
 		@article = Article.new
 	end
+	def tagged
+	  if params[:tag].present? 
+	    @articles = Article.tagged_with(params[:tag])
+	  else 
+	    @articles = Article.postall
+	  end  
+	end
 	def create
   		@article = Article.new(article_params)
- 
 	  	if @article.save
 	    	redirect_to @article
 	  	else
@@ -25,6 +31,11 @@ class ArticlesController < ApplicationController
 
 	def index
  		@articles = Article.all
+ 		 if params[:tag]
+		    @articles = Article.tagged_with(params[:tag])
+		  else
+		    @articles = Article.all
+		  end
 	end
 
 	def edit
@@ -43,7 +54,7 @@ class ArticlesController < ApplicationController
   	
   	private
 	  def article_params
-	    params.require(:article).permit(:title, :text)
+	    params.require(:article).permit(:title, :text, :tag_list)
 	  end
 
 	
