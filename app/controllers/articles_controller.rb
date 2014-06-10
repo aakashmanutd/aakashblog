@@ -2,15 +2,18 @@ class ArticlesController < ApplicationController
 	def new
 		@article = Article.new
 	end
+
 	def tagged
-	  if params[:tag].present? 
+	  if params[:tag].present?
 	    @articles = Article.tagged_with(params[:tag])
-	  else 
+	  else
 	    @articles = Article.postall
-	  end  
+	  end
 	end
+
 	def create
   		@article = Article.new(article_params)
+  		@article.user_id = current_user.id
 	  	if @article.save
 	    	redirect_to @article
 	  	else
@@ -21,7 +24,7 @@ class ArticlesController < ApplicationController
 	def destroy
 	  @article = Article.find(params[:id])
 	  @article.destroy
-	 
+
 	  redirect_to articles_path
 	end
 
@@ -44,18 +47,18 @@ class ArticlesController < ApplicationController
 
 	def update
 	  @article = Article.find(params[:id])
-	 
+
 	  if @article.update(article_params)
 	    redirect_to @article
 	  else
 	    render 'edit'
 	  end
 	end
-  	
+
   	private
 	  def article_params
 	    params.require(:article).permit(:title, :text, :tag_list)
 	  end
 
-	
+
 end

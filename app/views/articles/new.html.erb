@@ -1,5 +1,9 @@
-<h1>New article</h1>
- 
+<h1>New</h1>
+
+<% if user_signed_in? %>
+  <div>Signed in as... <%= current_user.email %></div>
+<% end %>
+
 <%= render 'form' %>
- 
+
 <%= link_to 'Back', articles_path %>
