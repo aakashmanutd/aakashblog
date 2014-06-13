@@ -36,6 +36,9 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+#Friendly_id for friendly URL's
+gem 'friendly_id', '~> 5.0.0'
+
 # haml gem
 gem 'haml'
 
@@ -49,3 +52,13 @@ gem 'omniauth-facebook'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+#Zurb Foundation
+gem 'foundation-rails'
+
+#compass gem
+gem 'compass'
+
+#paperclip gem for uploading images
+
+gem "paperclip", "~> 4.1"

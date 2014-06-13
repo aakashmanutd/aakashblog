@@ -4,6 +4,10 @@
 %p
   %strong Text:
 =@article.text
+
+%div
+  = image_tag @article.pics.url(:small)
+
 %p
   %strong Article By:
 =@article.user.email

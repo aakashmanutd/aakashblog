@@ -22,14 +22,14 @@ class ArticlesController < ApplicationController
 	end
 
 	def destroy
-	  @article = Article.find(params[:id])
+	  @article = Article.friendly.find(params[:id])
 	  @article.destroy
 
 	  redirect_to articles_path
 	end
 
 	def show
-  		@article = Article.find(params[:id])
+  		@article = Article.friendly.find(params[:id])
 	end
 
 	def index
@@ -42,11 +42,11 @@ class ArticlesController < ApplicationController
 	end
 
 	def edit
-  		@article = Article.find(params[:id])
+  		@article = Article.friendly.find(params[:id])
 	end
 
 	def update
-	  @article = Article.find(params[:id])
+	  @article = Article.friendly.find(params[:id])
 
 	  if @article.update(article_params)
 	    redirect_to @article
@@ -57,7 +57,8 @@ class ArticlesController < ApplicationController
 
   	private
 	  def article_params
-	    params.require(:article).permit(:title, :text, :tag_list)
+	    params.require(:article).permit(:title, :text, :tag_list, :pics
+	    	)
 	  end
 
 

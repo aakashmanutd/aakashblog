@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
           email: auth.info.email.blank? ? TEMP_EMAIL : auth.info.email,
           password: Devise.friendly_token[0,20]
         )
-        user.skip_confirmation!
+        #user.skip_confirmation!
         user.save!
       end
 
