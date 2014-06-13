@@ -1,6 +1,18 @@
--if @article == "dasa"
-  zxczxc
-end
+%ul.small-block-grid-2
+  -@article.each do |t|
+    %li
+      %a{:href => article_path(t)}
+        -if t.pics != nil
+          = image_tag t.pics.url(:small)
+        -else
+          %img {:src => "/assests/pic" }
+        %div
+          =t.title
+        %div
+          Written By -
+          =t.user.name
+
+
 
 =link_to 'My Blog', controller: 'articles'
 =link_to 'New article', new_article_path

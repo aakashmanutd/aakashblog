@@ -19,7 +19,9 @@
       %section.top-bar-section
         %ul.right
           %li.active
-            %a{:href=>"/"}Right Button Active
+            -if user_signed_in?
+              %a{:href=>"/"}
+                =current_user.name
           %li.has-dropdown
             %a Account
             %ul.dropdown
@@ -31,5 +33,5 @@
                   =link_to "Sign in", user_session_path, :method => :post
         %ul.left
           %li
-            %a{:href=>"#"}Left Nav ButtonS
+            =link_to 'New article', new_article_path
     =yield
